@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require('passport');
 
 const cityModel = require('../../models/city')
 
@@ -19,13 +20,13 @@ router.get('/',
 /* add city*/
 router.post('/',
     /* Uncomment next line to add web token athentification */
-    //passport.authenticate("jwt", { session: false }),
+    passport.authenticate("jwt", { session: false }),
     (req, res) => {
-        console.log(req.body)
+        const { name, country, img } = req.body
         let addCity = new cityModel({
-            name: req.body.name,
-            country: req.body.country,
-            img: req.body.img
+            name,
+            country,
+            img
         })
         console.log(addCity)
         addCity.save((err, files) => {

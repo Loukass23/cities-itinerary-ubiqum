@@ -38,13 +38,13 @@ router.post('/',
         const { city, title, img, summary, duration,
             price, rating } = req.body
         let addItinerary = new itineraryModel({
-            city: city,
-            title: title,
-            img: img,
-            summary: summary,
-            duration: duration,
-            price: price,
-            rating: rating
+            city,
+            title,
+            img,
+            summary,
+            duration,
+            price,
+            rating
         })
         addItinerary.save((err, files) => {
             if (err) { console.log(err) }

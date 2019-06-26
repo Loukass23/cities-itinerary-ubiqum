@@ -2,7 +2,7 @@ const passport = require('passport');
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;
 const mongoose = require('mongoose');
-var user = require('./../models/user');
+const user = require('./../models/user');
 mongoose.model('user');
 const keys = require('./keys');
 
@@ -54,7 +54,7 @@ module.exports = passport => {
       });
     })
   );
-  
+
   passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
     //jwt payload used for authentication 
     console.log("jwt", jwt_payload)
