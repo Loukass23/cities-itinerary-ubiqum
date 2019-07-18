@@ -29,10 +29,11 @@ router.get("/all",
 );
 
 /*get user by ID*/
-router.get('/:id',
+router.get('/id/:id',
     /* Uncomment next line to add web token athentification */
     //passport.authenticate("jwt", { session: false }),
     (req, res) => {
+        console.log('req :', req);
         const { id } = req.params
         userModel.findOne({ _id: id })
             .then(response => {
@@ -144,6 +145,7 @@ router.get('/google', passport.authenticate('google', {
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
     user = req.user
+    console.log('user :', user);
     const payload = {
         user: {
             id: user.id
