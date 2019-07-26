@@ -7,6 +7,7 @@
     "cors": "^2.8.5",
     "dotenv": "^6.2.0",
     "express": "^4.16.4",
+    "g": "^2.0.1",
     "is-empty": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^2.2.0",
@@ -20,6 +21,6 @@
   },
   "devDependencies": {
     "node-env-run": "^3.0.2",
-    "nodemon": "^1.18.10"
+    "nodemon": "^1.19.1"
   }
 }
