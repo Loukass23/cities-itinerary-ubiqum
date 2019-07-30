@@ -59,7 +59,8 @@ router.post('/register', async (req, res) => {
             name,
             email,
             img,
-            password
+            password,
+            oAuth : false
         })
         const salt = await bcrypt.genSalt(10)
         user.password = await bcrypt.hash(password, salt)
@@ -97,8 +98,11 @@ router.post('/login', (req, res) => {
     userModel.findOne({ email })
         .then(user => {
             //check if user exists
-            if (!user) {
+            if (!user ) {
                 return res.status(400).json({ error: 'Email not found' });
+            }
+            if (user.oAuth) {
+                return res.status(400).json({ error: 'OAuth user, connect with Google' });
             }
             if (!password) {
                 return res.status(400).json({ error: 'Enter password' });
@@ -122,7 +126,7 @@ router.post('/login', (req, res) => {
                             res.json({
                                 user,
                                 success: true,
-                                token: 'bearer ' + token,
+                                token
                             });
                         }
                     );

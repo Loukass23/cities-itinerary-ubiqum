@@ -19,7 +19,10 @@ const usersSchema = new mongoose.Schema({
         unique: true
     },
     password: {
-        type: String,
+        type: String
+    },
+    oAuth:{
+        type: Boolean,
         required: true
     },
     date: {
