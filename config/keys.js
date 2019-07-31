@@ -1,5 +1,3 @@
-
-
 module.exports = {
   secret: "secret",
   mongoURI:

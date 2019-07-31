@@ -7,7 +7,7 @@ const itineraryModel = require('../../models/itinerary')
 /*get all itineraries*/
 router.get('/all',
     /* Uncomment next line to add web token athentification */
-    passport.authenticate("jwt", { session: false }),
+    //passport.authenticate("jwt", { session: false }),
     (req, res) => {
         itineraryModel.find()
             //telling mongoose to populate the field city in the itineraries model with the value of id and name of the model city
@@ -33,7 +33,7 @@ router.get('/:city',
 /*add itinerary*/
 router.post('/',
     /* Uncomment next line to add web token athentification */
-    passport.authenticate("jwt", { session: false }),
+    //passport.authenticate("jwt", { session: false }),
     (req, res) => {
         console.log(req.body)
         const { city, title, img, summary, duration,

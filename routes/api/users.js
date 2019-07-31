@@ -165,7 +165,7 @@ router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
             res.json({
                 user,
                 success: true,
-                token: 'bearer ' + token,
+                token,
             });
         }
     );
