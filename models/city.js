@@ -12,6 +12,7 @@ const citiesSchema = new mongoose.Schema({
     },
     img: {
         type: String,
+
     }
 })
 

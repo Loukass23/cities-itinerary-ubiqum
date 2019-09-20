@@ -23,9 +23,9 @@ mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true })
 
 
 //importing the routes
-const cityRoutes = require('./routes/api/cities');
-const itineraryRoutes = require('./routes/api/itineraries');
-const userRoutes = require('./routes/api/users');
+const cityRoutes = require('./routes/cities');
+const itineraryRoutes = require('./routes/itineraries');
+const userRoutes = require('./routes/users');
 
 
 //passport configuration
@@ -34,9 +34,9 @@ app.use(passport.session());
 require('./config/passport')(passport);
 
 //using the routes for a specific api
-app.use('/api/cities', cityRoutes);
-app.use('/api/itineraries', itineraryRoutes);
-app.use('/api/users', userRoutes);
+app.use('/cities', cityRoutes);
+app.use('/itineraries', itineraryRoutes);
+app.use('/users', userRoutes);
 
 //TO REMOVE -> google domain verification
 app.get('/google1132ff054dbd1d04.html', function (req, res) {

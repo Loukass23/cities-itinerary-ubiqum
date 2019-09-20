@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
-const userModel = require('../../models/user');
-const itineraryModel = require('../../models/itinerary');
+const userModel = require('../models/user');
+const itineraryModel = require('../models/itinerary');
 const jwt = require("jsonwebtoken");
-const keys = require("../../config/keys");
+const keys = require("../config/keys");
 const passport = require('passport');
 
 /*get all users*/
@@ -60,7 +60,7 @@ router.post('/register', async (req, res) => {
             email,
             img,
             password,
-            oAuth : false
+            oAuth: false
         })
         const salt = await bcrypt.genSalt(10)
         user.password = await bcrypt.hash(password, salt)
@@ -98,7 +98,7 @@ router.post('/login', (req, res) => {
     userModel.findOne({ email })
         .then(user => {
             //check if user exists
-            if (!user ) {
+            if (!user) {
                 return res.status(400).json({ error: 'Email not found' });
             }
             if (user.oAuth) {

@@ -1,4 +1,10 @@
+npm install -g heroku
+
+heroku git:clone -a ubiqum-mern-api
+cd ubiqum-mern-api
+
 heroku login
 git add .
 git commit -am "make it better"
+
 git push heroku master

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 
-const itineraryModel = require('../../models/itinerary')
+const itineraryModel = require('../models/itinerary')
 
 /*get all itineraries*/
 router.get('/all',
