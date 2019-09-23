@@ -1,7 +1,6 @@
 npm install -g heroku
 
-heroku git:clone -a ubiqum-mern-api
-cd ubiqum-mern-api
+heroku git:remote -a mern-ubiqum-v2
 
 heroku login
 git add .

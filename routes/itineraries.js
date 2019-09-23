@@ -24,7 +24,7 @@ router.get('/:city',
     //passport.authenticate("jwt", { session: false }),
     (req, res) => {
         const { city } = req.params
-        itineraryModel.find({ 'city': city }, (err, itineraryList) => {
+        itineraryModel.findOne({ 'city': city }, (err, itineraryList) => {
             if (err) throw err;
             res.send(itineraryList)
         })
