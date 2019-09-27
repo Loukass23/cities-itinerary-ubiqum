@@ -26,7 +26,10 @@ router.get('/:city',
         const { city } = req.params
         itineraryModel.find({ 'city': city }, (err, itineraryList) => {
             if (err) throw err;
-            res.send(itineraryList)
+            if (itineraryList != null) res.send(itineraryList)
+            else res.send({
+                error: `There is no itineraries for ${city}`,
+            })
         })
     });
 
