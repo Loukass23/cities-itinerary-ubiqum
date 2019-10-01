@@ -30,7 +30,7 @@ module.exports = passport => {
       // options for google strategy
       clientID: keys.google.clientID,
       clientSecret: keys.google.clientSecret,
-      callbackURL: '/api/users/google/redirect'
+      callbackURL: '/users/google/redirect'
     }, (accessToken, refreshToken, profile, done) => {
       // check if user already exists in our own db
       user.findOne({ googleId: profile.id }).then((currentUser) => {
@@ -55,19 +55,20 @@ module.exports = passport => {
     })
   );
 
-  passport.use(new JwtStrategy(opts, (jwt_payload, done) => {
-    //jwt payload used for authentication 
-    console.log("jwt", jwt_payload)
-    user.findById(jwt_payload.user.id)
-      .then(user => {
-        if (user) {
-          console.log(user)
-          return done(null, user);
-        }
-        return done(null, false);
-      })
-      .catch(err => console.log(err));
-  })
+  passport.use(
+    new JwtStrategy(opts, (jwt_payload, done) => {
+      //jwt payload used for authentication 
+      console.log("jwt", jwt_payload)
+      user.findById(jwt_payload.user.id)
+        .then(user => {
+          if (user) {
+            console.log(user)
+            return done(null, user);
+          }
+          return done(null, false);
+        })
+        .catch(err => console.log(err));
+    })
   );
 
 }

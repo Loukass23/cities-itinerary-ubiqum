@@ -25,6 +25,7 @@ const ItinerarySchema = new Schema({
     },
     rating: {
         type: String
+
     }
 });
 module.exports = Itinerary = mongoose.model('itinerary', ItinerarySchema);

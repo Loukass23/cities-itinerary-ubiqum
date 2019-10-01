@@ -15,7 +15,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-
 app.use(cors())
 mongoose.connect(db, { useNewUrlParser: true, useCreateIndex: true })
     .then(() => console.log('Connection to Mongo DB established'))

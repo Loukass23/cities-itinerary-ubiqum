@@ -55,6 +55,9 @@ router.post('/register', async (req, res) => {
         if (user) {
             res.status(400).json({ errors: [{ msg: 'Email taken.' }] })
         }
+        if (!password) {
+            res.status(400).json({ errors: [{ msg: 'Please enter a valid password.' }] })
+        }
         user = new userModel({
             name,
             email,
@@ -148,7 +151,7 @@ router.get('/google', passport.authenticate('google', {
 // callback route for google to redirect to
 // hand control to passport to use code to grab profile info
 router.get('/google/redirect', passport.authenticate('google'), (req, res) => {
-    user = req.user
+    let user = req.user
     console.log('user :', user);
     const payload = {
         user: {
