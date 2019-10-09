@@ -12,6 +12,8 @@ const citiesSchema = new mongoose.Schema({
     },
     img: {
         type: String,
+        default:
+            'https://res.cloudinary.com/ds3w3iwbk/image/upload/v1570632597/MERN/20180519_150452.jpg'
 
     }
 })
